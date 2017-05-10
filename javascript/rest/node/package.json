@@ -1,0 +1,15 @@
+{
+  "name": "node-flightxml3-example",
+  "version": "1.0.0",
+  "description": "Example of making calls to the FlightXML3 API using node",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonathan Cone <jonathan.cone@flightaware.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-rest-client": "^3.1.0"
+  }
+}

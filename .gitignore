@@ -8,6 +8,9 @@
 
 target/
 
+### Node ###
+node_modules/
+
 ### STS ###
 .apt_generated
 .classpath
