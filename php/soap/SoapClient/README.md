@@ -2,7 +2,7 @@ Requirements
 ------------
 
 * PHP >= 5.6
-* Web Server (Apache/Nginx/IIS)
+* (Optional) Web Server (Apache/Nginx/IIS)
 
 What to change
 -------------
@@ -14,3 +14,6 @@ Running the example
 -------------------
 Copy the example files to your web server's document root or configure
 your web server to host the project.
+
+Or execute the script on the command line:
+php index.php
