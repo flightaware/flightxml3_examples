@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="your name here">
+	<title>Airport Boards Example</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#go_button').click(function() {
+			$.ajax({
+				url: 'flightxml_query.php',
+				data: {
+					airport_code: $('#airport_code').val()
+				},
+				success: function(response) {
+					if (response.error) {
+						alert('Failed to decode route: ' + response.error);
+						return;
+					}
+
+					$('tbody').empty();
+
+					$.each(response, function(key, value) {
+						value.forEach(flight => {
+							var table;
+							var airport;
+							switch (key) {
+								case 'arrivals':
+									table = $('#airport_arrivals tbody');
+									airport = flight.origin.code;
+									break;
+								case 'departures':
+									table = $('#airport_departures tbody');
+									airport = flight.destination.code;
+									break;
+								case 'enroute':
+									table = $('#airport_enroute tbody');
+									airport = flight.origin.code;
+									break;
+								case 'scheduled':
+									table = $('#airport_scheduled tbody');
+									airport = flight.destination.code;
+									break;
+								default:
+									alert('Received an invalid board in the response');
+									return;
+							}
+							var departureTime = (flight.actual_departure_time && flight.actual_departure_time.epoch > 0) ? flight.actual_departure_time.time : flight.estimated_departure_time.time;
+							var arrivalTime = (flight.actual_arrival_time && flight.actual_arrival_time.epoch > 0) ? flight.actual_arrival_time.time : flight.estimated_arrival_time.time;
+							table.append('<tr><td>'+ flight.ident +'</td><td>' + airport + '</td><td>' + departureTime +'</td><td>' + arrivalTime + '</td></tr>')
+						});
+					});
+				}
+			})
+		});
+	})
+	</script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form onsubmit="return false;">
+				<p>Enter an Airport Code (ie KIAH, KJFK, EGLL): 
+					<input type="text" name="airport" id="airport_code" value="KIAH" />
+					<input type="submit" id="go_button" name="Go" />
+				</p>
+			</form>
+		</div>
+	</div>
+	<div id="content" class="row" style="">
+		<div class="col-md-6">
+			<table id="airport_arrivals" class="table">
+				<thead>
+					<tr><th colspan="4">Arrivals</th></tr>
+					<tr>
+						<th>Ident</th>
+						<th>From</th>
+						<th>Depart</th>
+						<th>Arrive</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<table id="airport_departures" class="table">
+				<thead>
+					<tr><th colspan="4">Departures</th></tr>
+					<tr>
+						<th>Ident</th>
+						<th>To</th>
+						<th>Depart</th>
+						<th>Arrive</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<table id="airport_enroute" class="table">
+				<thead>
+					<tr><th colspan="4">Enroute</th></tr>
+					<tr>
+						<th>Ident</th>
+						<th>From</th>
+						<th>Depart</th>
+						<th>Arrive</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<table id="airport_scheduled" class="table">
+				<thead>
+					<tr><th colspan="4">Scheduled</th></tr>
+					<tr>
+						<th>Ident</th>
+						<th>To</th>
+						<th>Depart</th>
+						<th>Arrive</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
