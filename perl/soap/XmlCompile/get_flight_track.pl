@@ -11,7 +11,7 @@ use DateTime;
 # Replace the username / apiKey fields with your values
 my $username = "YOUR_USERNAME";
 my $apiKey = "YOUR_API_KEY";
-my $WSDL = 'http://flightxml.flightaware.com/soap/FlightXML3/wsdl';
+my $WSDL = 'https://flightxml.flightaware.com/soap/FlightXML3/wsdl';
 
 sub basic_auth {
 	my ($request, $trace) = @_;
