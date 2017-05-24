@@ -13,7 +13,7 @@ namespace FlightXMLClient
     {
         static void Main(string[] args)
         {
-            string fxmlUrl = "http://jonathan.flightaware.com/json/FlightXML3";
+            string fxmlUrl = "http://flightxml.flightaware.com/json/FlightXML3";
             string username = "YOUR_USERNAME";
             string apiKey = "YOUR_APIKEY";
 

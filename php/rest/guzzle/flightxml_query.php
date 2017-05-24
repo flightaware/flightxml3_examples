@@ -26,7 +26,7 @@ $auth_info = [
 
 // Create the base client - add whatever defauls you need here.
 $client = new Client([
-	'base_uri' => 'http://jonathan.flightaware.com/json/FlightXML3/',
+	'base_uri' => 'http://flightxml.flightaware.com/json/FlightXML3/',
 	'auth' => $auth_info
 ]);
 
