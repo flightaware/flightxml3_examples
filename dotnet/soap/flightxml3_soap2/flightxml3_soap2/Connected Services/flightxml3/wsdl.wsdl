@@ -1,0 +1,1259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:FlightXML3="http://flightxml.flightaware.com/soap/FlightXML3" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://flightxml.flightaware.com/soap/FlightXML3" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://flightxml.flightaware.com/soap/FlightXML3">
+      <xs:element name="AircraftTypeRequest" type="FlightXML3:AircraftTypeRequest" />
+      <xs:complexType name="AircraftTypeRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AircraftTypeResults" type="FlightXML3:AircraftTypeResults" />
+      <xs:complexType name="AircraftTypeResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AircraftTypeResult" type="FlightXML3:AircraftTypeStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AircraftTypeStruct" type="FlightXML3:AircraftTypeStruct" />
+      <xs:complexType name="AircraftTypeStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="manufacturer" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="engine_count" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="engine_type" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineFlightSchedulesRequest" type="FlightXML3:AirlineFlightSchedulesRequest" />
+      <xs:complexType name="AirlineFlightSchedulesRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="start_date" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="end_date" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="origin" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="destination" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="airline" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="flightno" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="exclude_codeshare" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineFlightSchedulesResults" type="FlightXML3:AirlineFlightSchedulesResults" />
+      <xs:complexType name="AirlineFlightSchedulesResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AirlineFlightSchedulesResult" type="FlightXML3:ArrayOfAirlineFlightScheduleStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineFlightScheduleStruct" type="FlightXML3:AirlineFlightScheduleStruct" />
+      <xs:complexType name="AirlineFlightScheduleStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="fa_ident" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="actual_ident" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="departuretime" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="arrivaltime" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="origin" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="destination" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="aircrafttype" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="meal_service" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="seats_cabin_first" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="seats_cabin_business" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="seats_cabin_coach" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineInfoRequest" type="FlightXML3:AirlineInfoRequest" />
+      <xs:complexType name="AirlineInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airline_code" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineInfoResults" type="FlightXML3:AirlineInfoResults" />
+      <xs:complexType name="AirlineInfoResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AirlineInfoResult" type="FlightXML3:AirlineInfoStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineInfoStruct" type="FlightXML3:AirlineInfoStruct" />
+      <xs:complexType name="AirlineInfoStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="shortname" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="callsign" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="location" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="country" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="phone" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="url" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="wiki_url" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="airbourne" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="flights_last_24_hours" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportBoardsRequest" type="FlightXML3:AirportBoardsRequest" />
+      <xs:complexType name="AirportBoardsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="include_ex_data" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="filter" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="type" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportBoardsResults" type="FlightXML3:AirportBoardsResults" />
+      <xs:complexType name="AirportBoardsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AirportBoardsResult" type="FlightXML3:AirportBoardsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportBoardsStruct" type="FlightXML3:AirportBoardsStruct" />
+      <xs:complexType name="AirportBoardsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="airport_info" type="FlightXML3:AirportStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="arrivals" type="FlightXML3:TrackAirportStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="departures" type="FlightXML3:TrackAirportStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="enroute" type="FlightXML3:TrackAirportStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="scheduled" type="FlightXML3:TrackAirportStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportDelayEntry" type="FlightXML3:AirportDelayEntry" />
+      <xs:complexType name="AirportDelayEntry">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="color" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="delay_secs" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="category" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="reasons_all" type="FlightXML3:AirportDelayReason" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportDelayReason" type="FlightXML3:AirportDelayReason" />
+      <xs:complexType name="AirportDelayReason">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="reason" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="category" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="delay_secs" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="color" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportDelaysRequest" type="FlightXML3:AirportDelaysRequest" />
+      <xs:complexType name="AirportDelaysRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportDelaysResults" type="FlightXML3:AirportDelaysResults" />
+      <xs:complexType name="AirportDelaysResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AirportDelaysResult" type="FlightXML3:AirportDelayStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportDelayStruct" type="FlightXML3:AirportDelayStruct" />
+      <xs:complexType name="AirportDelayStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="delays" type="FlightXML3:AirportDelayEntry" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportDisplayStruct" type="FlightXML3:AirportDisplayStruct" />
+      <xs:complexType name="AirportDisplayStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="code" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="city" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="alternate_ident" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportInfoRequest" type="FlightXML3:AirportInfoRequest" />
+      <xs:complexType name="AirportInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportInfoResults" type="FlightXML3:AirportInfoResults" />
+      <xs:complexType name="AirportInfoResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AirportInfoResult" type="FlightXML3:AirportStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportStruct" type="FlightXML3:AirportStruct" />
+      <xs:complexType name="AirportStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="distance" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="elevation" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="city" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="state" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="heading" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="direction" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="longitude" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="latitude" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="timezone" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="country_code" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="wiki_url" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAirlineFlightScheduleStruct" type="FlightXML3:ArrayOfAirlineFlightScheduleStruct" />
+      <xs:complexType name="ArrayOfAirlineFlightScheduleStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="flights" type="FlightXML3:AirlineFlightScheduleStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCountAirlineOperationsStruct" type="FlightXML3:ArrayOfCountAirlineOperationsStruct" />
+      <xs:complexType name="ArrayOfCountAirlineOperationsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="data" type="FlightXML3:CountAirlineOperationsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfFlightInfoStatusStruct" type="FlightXML3:ArrayOfFlightInfoStatusStruct" />
+      <xs:complexType name="ArrayOfFlightInfoStatusStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="flights" type="FlightXML3:FlightInfoStatusStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfFlightRouteStruct" type="FlightXML3:ArrayOfFlightRouteStruct" />
+      <xs:complexType name="ArrayOfFlightRouteStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="route_distance" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="data" type="FlightXML3:FlightRouteStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfRoutesBetweenAirportsStruct" type="FlightXML3:ArrayOfRoutesBetweenAirportsStruct" />
+      <xs:complexType name="ArrayOfRoutesBetweenAirportsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="data" type="FlightXML3:RoutesBetweenAirportsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfTrackStruct" type="FlightXML3:ArrayOfTrackStruct" />
+      <xs:complexType name="ArrayOfTrackStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="tracks" type="FlightXML3:TrackStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BlockIdentCheckRequest" type="FlightXML3:BlockIdentCheckRequest" />
+      <xs:complexType name="BlockIdentCheckRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BlockIdentCheckResults" type="FlightXML3:BlockIdentCheckResults" />
+      <xs:complexType name="BlockIdentCheckResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="BlockIdentCheckResult" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CancellationRowStruct" type="FlightXML3:CancellationRowStruct" />
+      <xs:complexType name="CancellationRowStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="description" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="cancellations" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="delays" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="total" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CancellationSummaryStruct" type="FlightXML3:CancellationSummaryStruct" />
+      <xs:complexType name="CancellationSummaryStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="total_cancellations_worldwide" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="total_cancellations_national" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="total_delays_worldwide" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type_matching" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="matching" type="FlightXML3:CancellationRowStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountAirlineOperationsStruct" type="FlightXML3:CountAirlineOperationsStruct" />
+      <xs:complexType name="CountAirlineOperationsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="icao" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="enroute" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountAirportOperationsRequest" type="FlightXML3:CountAirportOperationsRequest" />
+      <xs:complexType name="CountAirportOperationsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountAirportOperationsResults" type="FlightXML3:CountAirportOperationsResults" />
+      <xs:complexType name="CountAirportOperationsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="CountAirportOperationsResult" type="FlightXML3:CountAirportOperationsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountAirportOperationsStruct" type="FlightXML3:CountAirportOperationsStruct" />
+      <xs:complexType name="CountAirportOperationsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="enroute" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="departed" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="scheduled_departures" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="scheduled_arrivals" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CountAllEnrouteAirlineOperationsRequest" type="FlightXML3:CountAllEnrouteAirlineOperationsRequest" />
+      <xs:complexType name="CountAllEnrouteAirlineOperationsRequest">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="CountAllEnrouteAirlineOperationsResults" type="FlightXML3:CountAllEnrouteAirlineOperationsResults" />
+      <xs:complexType name="CountAllEnrouteAirlineOperationsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="CountAllEnrouteAirlineOperationsResult" type="FlightXML3:ArrayOfCountAirlineOperationsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DecodedForecastStruct" type="FlightXML3:DecodedForecastStruct" />
+      <xs:complexType name="DecodedForecastStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="forecast_start" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="forecast_end" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="forecast_lines" type="FlightXML3:ForecastLineStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DecodeFlightRouteRequest" type="FlightXML3:DecodeFlightRouteRequest" />
+      <xs:complexType name="DecodeFlightRouteRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="faFlightID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DecodeFlightRouteResults" type="FlightXML3:DecodeFlightRouteResults" />
+      <xs:complexType name="DecodeFlightRouteResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="DecodeFlightRouteResult" type="FlightXML3:ArrayOfFlightRouteStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DecodeRouteRequest" type="FlightXML3:DecodeRouteRequest" />
+      <xs:complexType name="DecodeRouteRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="origin" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="route" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="destination" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DecodeRouteResults" type="FlightXML3:DecodeRouteResults" />
+      <xs:complexType name="DecodeRouteResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="DecodeRouteResult" type="FlightXML3:ArrayOfFlightRouteStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FindFlightMatch" type="FlightXML3:FindFlightMatch" />
+      <xs:complexType name="FindFlightMatch">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="num_segments" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="segments" type="FlightXML3:FlightInfoStatusStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FindFlightRequest" type="FlightXML3:FindFlightRequest" />
+      <xs:complexType name="FindFlightRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="origin" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="destination" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="include_ex_data" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="type" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filter" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FindFlightResults" type="FlightXML3:FindFlightResults" />
+      <xs:complexType name="FindFlightResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="FindFlightResult" type="FlightXML3:FindFlightStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FindFlightStruct" type="FlightXML3:FindFlightStruct" />
+      <xs:complexType name="FindFlightStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="num_flights" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="flights" type="FlightXML3:FindFlightMatch" />
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightCancellationStatisticsRequest" type="FlightXML3:FlightCancellationStatisticsRequest" />
+      <xs:complexType name="FlightCancellationStatisticsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="time_period" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type_matching" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ident_filter" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightCancellationStatisticsResults" type="FlightXML3:FlightCancellationStatisticsResults" />
+      <xs:complexType name="FlightCancellationStatisticsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="FlightCancellationStatisticsResult" type="FlightXML3:CancellationSummaryStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightInfoStatusRequest" type="FlightXML3:FlightInfoStatusRequest" />
+      <xs:complexType name="FlightInfoStatusRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="include_ex_data" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filter" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightInfoStatusResults" type="FlightXML3:FlightInfoStatusResults" />
+      <xs:complexType name="FlightInfoStatusResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="FlightInfoStatusResult" type="FlightXML3:ArrayOfFlightInfoStatusStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightInfoStatusStruct" type="FlightXML3:FlightInfoStatusStruct" />
+      <xs:complexType name="FlightInfoStatusStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="faFlightID" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="airline" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="flightnumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="tailnumber" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="codeshares" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="blocked" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="diverted" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="cancelled" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="origin" type="FlightXML3:AirportDisplayStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="destination" type="FlightXML3:AirportDisplayStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_ete" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="route" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_altitude" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="display_filed_altitude" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_airspeed_kts" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_airspeed_mach" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="distance_filed" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_departure_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="estimated_departure_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="actual_departure_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="departure_delay" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_arrival_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="estimated_arrival_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="actual_arrival_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="arrival_delay" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_blockout_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="estimated_blockout_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="actual_blockout_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="filed_blockin_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="estimated_blockin_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="actual_blockin_time" type="FlightXML3:Timestamp" />
+          <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="status_code" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="progress_percent" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="state_code" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="aircrafttype" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="display_aircrafttype" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="full_aircrafttype" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="terminal_dest" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="gate_dest" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="terminal_orig" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="gate_orig" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="bag_claim" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="seats_cabin_first" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="seats_cabin_business" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="seats_cabin_coach" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="inbound_faFlightID" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="datalink" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="adhoc" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightRouteStruct" type="FlightXML3:FlightRouteStruct" />
+      <xs:complexType name="FlightRouteStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="latitude" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="longitude" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="distance_from_origin" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="distance_to_destination" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="distance_this_leg" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="outbound_course" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ForecastCloudsStruct" type="FlightXML3:ForecastCloudsStruct" />
+      <xs:complexType name="ForecastCloudsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="coverage" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="altitude" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="special" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ForecastLineStruct" type="FlightXML3:ForecastLineStruct" />
+      <xs:complexType name="ForecastLineStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="forecast_line_type" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="forecast_line_start" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="forecast_line_end" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="winds" type="FlightXML3:ForecastWindStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="windshear" type="FlightXML3:ForecastWindshear" />
+          <xs:element minOccurs="0" maxOccurs="1" name="visibility" type="FlightXML3:ForecastVisibilityStruct" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="clouds" type="FlightXML3:ForecastCloudsStruct" />
+          <xs:element minOccurs="0" maxOccurs="1" name="turbulence_layers" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="icing_layers" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="barometric" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="significant_weather" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ForecastVisibilityStruct" type="FlightXML3:ForecastVisibilityStruct" />
+      <xs:complexType name="ForecastVisibilityStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="visibility" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="units" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ForecastWindshear" type="FlightXML3:ForecastWindshear" />
+      <xs:complexType name="ForecastWindshear">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="height" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="direction" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="speed" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="units" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ForecastWindStruct" type="FlightXML3:ForecastWindStruct" />
+      <xs:complexType name="ForecastWindStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="direction" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="speed" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="units" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="peak_gusts" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetFlightTrackRequest" type="FlightXML3:GetFlightTrackRequest" />
+      <xs:complexType name="GetFlightTrackRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="include_position_estimates" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetFlightTrackResults" type="FlightXML3:GetFlightTrackResults" />
+      <xs:complexType name="GetFlightTrackResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="GetFlightTrackResult" type="FlightXML3:ArrayOfTrackStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LatLongsToDistanceRequest" type="FlightXML3:LatLongsToDistanceRequest" />
+      <xs:complexType name="LatLongsToDistanceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="lat1" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lon1" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lat2" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lon2" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LatLongsToDistanceResults" type="FlightXML3:LatLongsToDistanceResults" />
+      <xs:complexType name="LatLongsToDistanceResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="LatLongsToDistanceResult" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LatLongsToHeadingRequest" type="FlightXML3:LatLongsToHeadingRequest" />
+      <xs:complexType name="LatLongsToHeadingRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="lat1" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lon1" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lat2" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lon2" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LatLongsToHeadingResults" type="FlightXML3:LatLongsToHeadingResults" />
+      <xs:complexType name="LatLongsToHeadingResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="LatLongsToHeadingResult" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NearbyAirportsRequest" type="FlightXML3:NearbyAirportsRequest" />
+      <xs:complexType name="NearbyAirportsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="latitude" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="longitude" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="radius" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="only_iap" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NearbyAirportsResults" type="FlightXML3:NearbyAirportsResults" />
+      <xs:complexType name="NearbyAirportsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="NearbyAirportsResult" type="FlightXML3:NearbyAirportsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NearbyAirportsStruct" type="FlightXML3:NearbyAirportsStruct" />
+      <xs:complexType name="NearbyAirportsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="airports" type="FlightXML3:AirportStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PingRequest" type="FlightXML3:PingRequest" />
+      <xs:complexType name="PingRequest">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="PingResults" type="FlightXML3:PingResults" />
+      <xs:complexType name="PingResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="PingResult" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RoutesBetweenAirportsRequest" type="FlightXML3:RoutesBetweenAirportsRequest" />
+      <xs:complexType name="RoutesBetweenAirportsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="origin" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="destination" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="max_file_age" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="sort_by" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RoutesBetweenAirportsResults" type="FlightXML3:RoutesBetweenAirportsResults" />
+      <xs:complexType name="RoutesBetweenAirportsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="RoutesBetweenAirportsResult" type="FlightXML3:ArrayOfRoutesBetweenAirportsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RoutesBetweenAirportsStruct" type="FlightXML3:RoutesBetweenAirportsStruct" />
+      <xs:complexType name="RoutesBetweenAirportsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="count" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="route" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="filed_altitude_min" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="filed_altitude_max" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="last_departuretime" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="route_distance" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="aircrafttypes" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TailOwnerRequest" type="FlightXML3:TailOwnerRequest" />
+      <xs:complexType name="TailOwnerRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ident" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TailOwnerResults" type="FlightXML3:TailOwnerResults" />
+      <xs:complexType name="TailOwnerResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="TailOwnerResult" type="FlightXML3:TailOwnerStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TailOwnerStruct" type="FlightXML3:TailOwnerStruct" />
+      <xs:complexType name="TailOwnerStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="owner" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="location" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="location2" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="website" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Timestamp" type="FlightXML3:Timestamp" />
+      <xs:complexType name="Timestamp">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="epoch" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="tz" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="dow" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="time" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="date" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="localtime" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TrackAirportStruct" type="FlightXML3:TrackAirportStruct" />
+      <xs:complexType name="TrackAirportStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="num_flights" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="flights" type="FlightXML3:FlightInfoStatusStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TrackStruct" type="FlightXML3:TrackStruct" />
+      <xs:complexType name="TrackStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="timestamp" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="latitude" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="longitude" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="groundspeed" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="altitude" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="altitude_status" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="update_type" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="altitude_change" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherConditionsArrayStruct" type="FlightXML3:WeatherConditionsArrayStruct" />
+      <xs:complexType name="WeatherConditionsArrayStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="next_offset" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="conditions" type="FlightXML3:WeatherConditionsStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherConditionsCloudStruct" type="FlightXML3:WeatherConditionsCloudStruct" />
+      <xs:complexType name="WeatherConditionsCloudStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="altitude" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherConditionsRequest" type="FlightXML3:WeatherConditionsRequest" />
+      <xs:complexType name="WeatherConditionsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="weather_date" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="temperature_units" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="howMany" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="offset" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherConditionsResults" type="FlightXML3:WeatherConditionsResults" />
+      <xs:complexType name="WeatherConditionsResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="WeatherConditionsResult" type="FlightXML3:WeatherConditionsArrayStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherConditionsStruct" type="FlightXML3:WeatherConditionsStruct" />
+      <xs:complexType name="WeatherConditionsStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="time" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="cloud_friendly" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="clouds" type="FlightXML3:WeatherConditionsCloudStruct" />
+          <xs:element minOccurs="1" maxOccurs="1" name="conditions" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="pressure" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="pressure_units" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="temp_air" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="temp_dewpoint" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="temp_relhum" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="temp_perceived" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="visibility" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="visibility_units" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="wind_friendly" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="wind_direction" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="wind_speed" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="wind_speed_gust" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="wind_units" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="raw_data" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherForecastRequest" type="FlightXML3:WeatherForecastRequest" />
+      <xs:complexType name="WeatherForecastRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="weather_date" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherForecastResults" type="FlightXML3:WeatherForecastResults" />
+      <xs:complexType name="WeatherForecastResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="WeatherForecastResult" type="FlightXML3:WeatherForecastStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WeatherForecastStruct" type="FlightXML3:WeatherForecastStruct" />
+      <xs:complexType name="WeatherForecastStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="airport_code" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="timestring" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="raw_forecast" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="decoded_forecast" type="FlightXML3:DecodedForecastStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ZipcodeInfoRequest" type="FlightXML3:ZipcodeInfoRequest" />
+      <xs:complexType name="ZipcodeInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="zipcode" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ZipcodeInfoResults" type="FlightXML3:ZipcodeInfoResults" />
+      <xs:complexType name="ZipcodeInfoResults">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ZipcodeInfoResult" type="FlightXML3:ZipcodeInfoStruct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ZipcodeInfoStruct" type="FlightXML3:ZipcodeInfoStruct" />
+      <xs:complexType name="ZipcodeInfoStruct">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="latitude" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="longitude" type="xs:float" />
+          <xs:element minOccurs="1" maxOccurs="1" name="city" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="state" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="county" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AircraftTypeIn">
+    <wsdl:part name="parameters" element="FlightXML3:AircraftTypeRequest" />
+  </wsdl:message>
+  <wsdl:message name="AircraftTypeOut">
+    <wsdl:part name="parameters" element="FlightXML3:AircraftTypeResults" />
+  </wsdl:message>
+  <wsdl:message name="AirlineFlightSchedulesIn">
+    <wsdl:part name="parameters" element="FlightXML3:AirlineFlightSchedulesRequest" />
+  </wsdl:message>
+  <wsdl:message name="AirlineFlightSchedulesOut">
+    <wsdl:part name="parameters" element="FlightXML3:AirlineFlightSchedulesResults" />
+  </wsdl:message>
+  <wsdl:message name="AirlineInfoIn">
+    <wsdl:part name="parameters" element="FlightXML3:AirlineInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="AirlineInfoOut">
+    <wsdl:part name="parameters" element="FlightXML3:AirlineInfoResults" />
+  </wsdl:message>
+  <wsdl:message name="AirportBoardsIn">
+    <wsdl:part name="parameters" element="FlightXML3:AirportBoardsRequest" />
+  </wsdl:message>
+  <wsdl:message name="AirportBoardsOut">
+    <wsdl:part name="parameters" element="FlightXML3:AirportBoardsResults" />
+  </wsdl:message>
+  <wsdl:message name="AirportDelaysIn">
+    <wsdl:part name="parameters" element="FlightXML3:AirportDelaysRequest" />
+  </wsdl:message>
+  <wsdl:message name="AirportDelaysOut">
+    <wsdl:part name="parameters" element="FlightXML3:AirportDelaysResults" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoIn">
+    <wsdl:part name="parameters" element="FlightXML3:AirportInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoOut">
+    <wsdl:part name="parameters" element="FlightXML3:AirportInfoResults" />
+  </wsdl:message>
+  <wsdl:message name="BlockIdentCheckIn">
+    <wsdl:part name="parameters" element="FlightXML3:BlockIdentCheckRequest" />
+  </wsdl:message>
+  <wsdl:message name="BlockIdentCheckOut">
+    <wsdl:part name="parameters" element="FlightXML3:BlockIdentCheckResults" />
+  </wsdl:message>
+  <wsdl:message name="CountAirportOperationsIn">
+    <wsdl:part name="parameters" element="FlightXML3:CountAirportOperationsRequest" />
+  </wsdl:message>
+  <wsdl:message name="CountAirportOperationsOut">
+    <wsdl:part name="parameters" element="FlightXML3:CountAirportOperationsResults" />
+  </wsdl:message>
+  <wsdl:message name="CountAllEnrouteAirlineOperationsIn">
+    <wsdl:part name="parameters" element="FlightXML3:CountAllEnrouteAirlineOperationsRequest" />
+  </wsdl:message>
+  <wsdl:message name="CountAllEnrouteAirlineOperationsOut">
+    <wsdl:part name="parameters" element="FlightXML3:CountAllEnrouteAirlineOperationsResults" />
+  </wsdl:message>
+  <wsdl:message name="DecodeFlightRouteIn">
+    <wsdl:part name="parameters" element="FlightXML3:DecodeFlightRouteRequest" />
+  </wsdl:message>
+  <wsdl:message name="DecodeFlightRouteOut">
+    <wsdl:part name="parameters" element="FlightXML3:DecodeFlightRouteResults" />
+  </wsdl:message>
+  <wsdl:message name="DecodeRouteIn">
+    <wsdl:part name="parameters" element="FlightXML3:DecodeRouteRequest" />
+  </wsdl:message>
+  <wsdl:message name="DecodeRouteOut">
+    <wsdl:part name="parameters" element="FlightXML3:DecodeRouteResults" />
+  </wsdl:message>
+  <wsdl:message name="FindFlightIn">
+    <wsdl:part name="parameters" element="FlightXML3:FindFlightRequest" />
+  </wsdl:message>
+  <wsdl:message name="FindFlightOut">
+    <wsdl:part name="parameters" element="FlightXML3:FindFlightResults" />
+  </wsdl:message>
+  <wsdl:message name="FlightCancellationStatisticsIn">
+    <wsdl:part name="parameters" element="FlightXML3:FlightCancellationStatisticsRequest" />
+  </wsdl:message>
+  <wsdl:message name="FlightCancellationStatisticsOut">
+    <wsdl:part name="parameters" element="FlightXML3:FlightCancellationStatisticsResults" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoStatusIn">
+    <wsdl:part name="parameters" element="FlightXML3:FlightInfoStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoStatusOut">
+    <wsdl:part name="parameters" element="FlightXML3:FlightInfoStatusResults" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightTrackIn">
+    <wsdl:part name="parameters" element="FlightXML3:GetFlightTrackRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightTrackOut">
+    <wsdl:part name="parameters" element="FlightXML3:GetFlightTrackResults" />
+  </wsdl:message>
+  <wsdl:message name="LatLongsToDistanceIn">
+    <wsdl:part name="parameters" element="FlightXML3:LatLongsToDistanceRequest" />
+  </wsdl:message>
+  <wsdl:message name="LatLongsToDistanceOut">
+    <wsdl:part name="parameters" element="FlightXML3:LatLongsToDistanceResults" />
+  </wsdl:message>
+  <wsdl:message name="LatLongsToHeadingIn">
+    <wsdl:part name="parameters" element="FlightXML3:LatLongsToHeadingRequest" />
+  </wsdl:message>
+  <wsdl:message name="LatLongsToHeadingOut">
+    <wsdl:part name="parameters" element="FlightXML3:LatLongsToHeadingResults" />
+  </wsdl:message>
+  <wsdl:message name="NearbyAirportsIn">
+    <wsdl:part name="parameters" element="FlightXML3:NearbyAirportsRequest" />
+  </wsdl:message>
+  <wsdl:message name="NearbyAirportsOut">
+    <wsdl:part name="parameters" element="FlightXML3:NearbyAirportsResults" />
+  </wsdl:message>
+  <wsdl:message name="PingIn">
+    <wsdl:part name="parameters" element="FlightXML3:PingRequest" />
+  </wsdl:message>
+  <wsdl:message name="PingOut">
+    <wsdl:part name="parameters" element="FlightXML3:PingResults" />
+  </wsdl:message>
+  <wsdl:message name="RoutesBetweenAirportsIn">
+    <wsdl:part name="parameters" element="FlightXML3:RoutesBetweenAirportsRequest" />
+  </wsdl:message>
+  <wsdl:message name="RoutesBetweenAirportsOut">
+    <wsdl:part name="parameters" element="FlightXML3:RoutesBetweenAirportsResults" />
+  </wsdl:message>
+  <wsdl:message name="TailOwnerIn">
+    <wsdl:part name="parameters" element="FlightXML3:TailOwnerRequest" />
+  </wsdl:message>
+  <wsdl:message name="TailOwnerOut">
+    <wsdl:part name="parameters" element="FlightXML3:TailOwnerResults" />
+  </wsdl:message>
+  <wsdl:message name="WeatherConditionsIn">
+    <wsdl:part name="parameters" element="FlightXML3:WeatherConditionsRequest" />
+  </wsdl:message>
+  <wsdl:message name="WeatherConditionsOut">
+    <wsdl:part name="parameters" element="FlightXML3:WeatherConditionsResults" />
+  </wsdl:message>
+  <wsdl:message name="WeatherForecastIn">
+    <wsdl:part name="parameters" element="FlightXML3:WeatherForecastRequest" />
+  </wsdl:message>
+  <wsdl:message name="WeatherForecastOut">
+    <wsdl:part name="parameters" element="FlightXML3:WeatherForecastResults" />
+  </wsdl:message>
+  <wsdl:message name="ZipcodeInfoIn">
+    <wsdl:part name="parameters" element="FlightXML3:ZipcodeInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="ZipcodeInfoOut">
+    <wsdl:part name="parameters" element="FlightXML3:ZipcodeInfoResults" />
+  </wsdl:message>
+  <wsdl:portType name="FlightXML3Soap">
+    <wsdl:operation name="AircraftType">
+      <wsdl:input message="FlightXML3:AircraftTypeIn" />
+      <wsdl:output message="FlightXML3:AircraftTypeOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirlineFlightSchedules">
+      <wsdl:input message="FlightXML3:AirlineFlightSchedulesIn" />
+      <wsdl:output message="FlightXML3:AirlineFlightSchedulesOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirlineInfo">
+      <wsdl:input message="FlightXML3:AirlineInfoIn" />
+      <wsdl:output message="FlightXML3:AirlineInfoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportBoards">
+      <wsdl:input message="FlightXML3:AirportBoardsIn" />
+      <wsdl:output message="FlightXML3:AirportBoardsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportDelays">
+      <wsdl:input message="FlightXML3:AirportDelaysIn" />
+      <wsdl:output message="FlightXML3:AirportDelaysOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <wsdl:input message="FlightXML3:AirportInfoIn" />
+      <wsdl:output message="FlightXML3:AirportInfoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockIdentCheck">
+      <wsdl:input message="FlightXML3:BlockIdentCheckIn" />
+      <wsdl:output message="FlightXML3:BlockIdentCheckOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CountAirportOperations">
+      <wsdl:input message="FlightXML3:CountAirportOperationsIn" />
+      <wsdl:output message="FlightXML3:CountAirportOperationsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CountAllEnrouteAirlineOperations">
+      <wsdl:input message="FlightXML3:CountAllEnrouteAirlineOperationsIn" />
+      <wsdl:output message="FlightXML3:CountAllEnrouteAirlineOperationsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecodeFlightRoute">
+      <wsdl:input message="FlightXML3:DecodeFlightRouteIn" />
+      <wsdl:output message="FlightXML3:DecodeFlightRouteOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecodeRoute">
+      <wsdl:input message="FlightXML3:DecodeRouteIn" />
+      <wsdl:output message="FlightXML3:DecodeRouteOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindFlight">
+      <wsdl:input message="FlightXML3:FindFlightIn" />
+      <wsdl:output message="FlightXML3:FindFlightOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightCancellationStatistics">
+      <wsdl:input message="FlightXML3:FlightCancellationStatisticsIn" />
+      <wsdl:output message="FlightXML3:FlightCancellationStatisticsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfoStatus">
+      <wsdl:input message="FlightXML3:FlightInfoStatusIn" />
+      <wsdl:output message="FlightXML3:FlightInfoStatusOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightTrack">
+      <wsdl:input message="FlightXML3:GetFlightTrackIn" />
+      <wsdl:output message="FlightXML3:GetFlightTrackOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LatLongsToDistance">
+      <wsdl:input message="FlightXML3:LatLongsToDistanceIn" />
+      <wsdl:output message="FlightXML3:LatLongsToDistanceOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LatLongsToHeading">
+      <wsdl:input message="FlightXML3:LatLongsToHeadingIn" />
+      <wsdl:output message="FlightXML3:LatLongsToHeadingOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NearbyAirports">
+      <wsdl:input message="FlightXML3:NearbyAirportsIn" />
+      <wsdl:output message="FlightXML3:NearbyAirportsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="FlightXML3:PingIn" />
+      <wsdl:output message="FlightXML3:PingOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoutesBetweenAirports">
+      <wsdl:input message="FlightXML3:RoutesBetweenAirportsIn" />
+      <wsdl:output message="FlightXML3:RoutesBetweenAirportsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TailOwner">
+      <wsdl:input message="FlightXML3:TailOwnerIn" />
+      <wsdl:output message="FlightXML3:TailOwnerOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WeatherConditions">
+      <wsdl:input message="FlightXML3:WeatherConditionsIn" />
+      <wsdl:output message="FlightXML3:WeatherConditionsOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WeatherForecast">
+      <wsdl:input message="FlightXML3:WeatherForecastIn" />
+      <wsdl:output message="FlightXML3:WeatherForecastOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZipcodeInfo">
+      <wsdl:input message="FlightXML3:ZipcodeInfoIn" />
+      <wsdl:output message="FlightXML3:ZipcodeInfoOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FlightXML3Soap" type="FlightXML3:FlightXML3Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AircraftType">
+      <soap:operation soapAction="FlightXML3:AircraftType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirlineFlightSchedules">
+      <soap:operation soapAction="FlightXML3:AirlineFlightSchedules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirlineInfo">
+      <soap:operation soapAction="FlightXML3:AirlineInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportBoards">
+      <soap:operation soapAction="FlightXML3:AirportBoards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportDelays">
+      <soap:operation soapAction="FlightXML3:AirportDelays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <soap:operation soapAction="FlightXML3:AirportInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlockIdentCheck">
+      <soap:operation soapAction="FlightXML3:BlockIdentCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountAirportOperations">
+      <soap:operation soapAction="FlightXML3:CountAirportOperations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountAllEnrouteAirlineOperations">
+      <soap:operation soapAction="FlightXML3:CountAllEnrouteAirlineOperations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecodeFlightRoute">
+      <soap:operation soapAction="FlightXML3:DecodeFlightRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecodeRoute">
+      <soap:operation soapAction="FlightXML3:DecodeRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindFlight">
+      <soap:operation soapAction="FlightXML3:FindFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightCancellationStatistics">
+      <soap:operation soapAction="FlightXML3:FlightCancellationStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfoStatus">
+      <soap:operation soapAction="FlightXML3:FlightInfoStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightTrack">
+      <soap:operation soapAction="FlightXML3:GetFlightTrack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LatLongsToDistance">
+      <soap:operation soapAction="FlightXML3:LatLongsToDistance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LatLongsToHeading">
+      <soap:operation soapAction="FlightXML3:LatLongsToHeading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NearbyAirports">
+      <soap:operation soapAction="FlightXML3:NearbyAirports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="FlightXML3:Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoutesBetweenAirports">
+      <soap:operation soapAction="FlightXML3:RoutesBetweenAirports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TailOwner">
+      <soap:operation soapAction="FlightXML3:TailOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WeatherConditions">
+      <soap:operation soapAction="FlightXML3:WeatherConditions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WeatherForecast">
+      <soap:operation soapAction="FlightXML3:WeatherForecast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZipcodeInfo">
+      <soap:operation soapAction="FlightXML3:ZipcodeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlightXML3">
+    <wsdl:documentation>FlightXML3 Web Services</wsdl:documentation>
+    <wsdl:port name="FlightXML3Soap" binding="FlightXML3:FlightXML3Soap">
+      <soap:address location="http://flightxml.flightaware.com/soap/FlightXML3/op" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
