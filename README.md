@@ -1,2 +1,2 @@
-# flightxml3_examples2
+# flightxml3_examples
 Example programs for FlightXML3
