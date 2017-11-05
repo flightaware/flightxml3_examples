@@ -23,7 +23,7 @@ public class WebController {
 
     @RequestMapping(path = "/airportBoards")
     public ResponseEntity<AirportBoards> getAirportBoards(@RequestParam String airportCode) {
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl("https://flightaware.flightaware.com/json/FlightXML3/AirportBoards")
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl("https://flightxml.flightaware.com/json/FlightXML3/AirportBoards")
                 .queryParam("airport_code", airportCode)
                 .queryParam("include_ex_data", true)
                 .queryParam("filter", "all")
