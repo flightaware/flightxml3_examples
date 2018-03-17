@@ -6,16 +6,17 @@ if (!$_GET['ident']) {
 }
 
 $ident = $_GET['ident'];
-$queryParams = array(
+$queryParams = [
 	'ident' => $ident,
 	'howMany' => 10,
 	'offset' => 10
-);
+];
 
 $result = [];
 header('Content-Type: application/json');
 
-if ($response = executeCurlRequest('FlightInfoStatus', $queryParams)) {
+$response = executeCurlRequest('FlightInfoStatus', $queryParams);
+if ($response) {
 	$flightArray = json_decode($response, true);
 	foreach ($flightArray['FlightInfoStatusResult']['flights'] as $flight) {
 		if ($flight['actual_departure_time']['epoch'] > 0 && $flight['route']) {
@@ -32,9 +33,13 @@ if ($response = executeCurlRequest('FlightInfoStatus', $queryParams)) {
 		}
 	}
 } else {
-	echo json_encode(array('error' => 'Unable to decode flight for ' . $ident));
+	echo json_encode(['error' => 'Unable to decode flight for ' . $ident]);
 }
 
+/**
+ * @param string $faFlightID
+ * @return string
+ */
 function getFlightRoute($faFlightID) {
 	$result = [];
 	if ($response = executeCurlRequest('DecodeFlightRoute', array('faFlightID' => $faFlightID))) {
@@ -47,6 +52,11 @@ function getFlightRoute($faFlightID) {
 	return "";
 }
 
+/**
+ * @param string $endpoint
+ * @param array $queryParams
+ * @return string Empty string returned if curl request failed
+ */
 function executeCurlRequest($endpoint, $queryParams) {
 
 	$username = "YOUR_USERNAME";
@@ -59,9 +69,10 @@ function executeCurlRequest($endpoint, $queryParams) {
 	curl_setopt($ch, CURLOPT_USERPWD, $username . ':' . $apiKey);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-	if ($result = curl_exec($ch)) {
+	$result = curl_exec($ch);
+	if ($result) {
 		curl_close($ch);
 		return $result;
 	}
-	return;
+	return "";
 }
