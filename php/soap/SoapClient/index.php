@@ -19,4 +19,3 @@ foreach ($result->WeatherConditionsResult->conditions as $key => $condition) {
 	echo "\n";
 }
 
-?>
