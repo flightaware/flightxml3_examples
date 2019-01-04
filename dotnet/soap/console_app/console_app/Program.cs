@@ -1,9 +1,10 @@
 ﻿using System;
-using console_app.FlightXML3;
+using console_app.flightxml.flightaware.com;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace console_app
 {
@@ -11,20 +12,19 @@ namespace console_app
     {
         static void Main(string[] args)
         {
-            FlightXML3SoapClient client = new FlightXML3SoapClient();
-            client.ClientCredentials.UserName.UserName = "sampleUser";
-            client.ClientCredentials.UserName.Password = "abcdefghijklmnopqrstuvwxyz";
+            FlightXML3 client = new FlightXML3();
 
-            AirportBoardsRequest req = new AirportBoardsRequest();
-            req.airport_code = "KIAH";
+            System.Net.ICredentials creds = new NetworkCredential("USERNAME", "APIKEY");
+            client.Credentials = creds;
 
-            AirportBoardsStruct res = client.AirportBoards("KIAH", false, "", "enroute", 10, 0);
+            AirportBoardsStruct res = client.AirportBoards("KIAH", false, true, "", "enroute", 10, true, 0, true);
             Console.WriteLine("Flights enroute to KIAH");
 
+            Console.WriteLine(res);
             foreach (var flight in res.enroute.flights)
             {
-                Console.WriteLine(String.Format("{0} ({1})\t{2} ({3})", flight.ident, flight.aircrafttype,
-                    flight.origin.airport_name, flight.origin.code));
+                Console.WriteLine(String.Format("{0} ({1})\t{2} ({3})", flight.ident, flight.aircrafttype, 
+                flight.origin.airport_name, flight.origin.code));
             }
         }
     }
